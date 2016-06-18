@@ -2,7 +2,7 @@
 Respo SPA example
 ----
 
-Example app for https://github.com/mvc-works/respo-spa
+Example app for https://github.com/mvc-works/respo
 
 ### Usage
 

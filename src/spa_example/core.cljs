@@ -1,6 +1,6 @@
 
 (ns spa-example.core
-  (:require [respo-spa.core :refer [render]]
+  (:require [respo.core :refer [render]]
             [spa-example.updater.core :refer [updater]]
             [spa-example.component.container :refer [comp-container]]))
 

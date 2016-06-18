@@ -6,7 +6,8 @@
 
 (defn init-state [] 0)
 
-(defn update-state [state step] (+ step state))
+(defn update-state [state step]
+  (+ step state))
 
 (defn handle-click [mutate step]
   (fn [simple-event dispatch]

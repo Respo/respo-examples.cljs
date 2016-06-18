@@ -17,12 +17,11 @@
       (div {}
         (->> (range 10)
           (map-indexed (fn [index n]
-            [index (comp-box n)]))
-          (into (sorted-map))))
+            [index (comp-box n)]))))
       (hr {})
       (comp-button "inc" handle-click)
       (span {:attrs {:inner-text (str store)}})
       (div {}
-        (comp-box)))))
+        (comp-box 5)))))
 
 (def comp-container (create-comp :container render))
