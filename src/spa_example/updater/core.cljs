@@ -2,4 +2,7 @@
 (ns spa-example.updater.core)
 
 (defn updater [store op op-data]
-  (inc store))
+  (case op
+    :inc (inc store)
+    :dec (dec store)
+    store))
