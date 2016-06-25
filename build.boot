@@ -21,3 +21,16 @@
     (reload :on-jsload 'spa-example.core/on-jsload)
     (cljs)
     (target)))
+
+(deftask build-advanced []
+  (set-env!
+    :asset-paths #{"assets"}
+    :source-paths #{"src"})
+  (comp
+    (cljs :optimizations :advanced)
+    (target)))
+
+(deftask rsync []
+  (with-pre-wrap fileset
+    (sh "rsync" "-r" "target/" "tiye:repo/mvc-works/respo-spa-example" "--exclude" "main.out" "--delete")
+    fileset))
