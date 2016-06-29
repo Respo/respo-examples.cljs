@@ -5,7 +5,7 @@
     [hsl.core :refer [hsl]]))
 
 (defn render [text on-click]
-  (fn [state mutate]
+  (fn [state mutate!]
     (div {:style {:background-color (hsl 200 80 70)
                   :display "inline-block"
                   :padding "0 8px"

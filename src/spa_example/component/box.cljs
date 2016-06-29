@@ -9,18 +9,18 @@
 (defn update-state [state step]
   (+ step state))
 
-(defn handle-click [mutate step]
-  (fn [simple-event dispatch]
-    (mutate step)))
+(defn handle-click [mutate-parent! step]
+  (fn [simple-event dispatch! mutate!]
+    (mutate-parent! step)))
 
 (defn text [x]
   (span {:attrs {:inner-text (str x)}}))
 
 (defn render [n]
-  (fn [state mutate]
+  (fn [state mutate!]
     (div {}
       (text (str n ". "))
-      (comp-button "inc" (handle-click mutate n))
+      (comp-button "inc" (handle-click mutate! n))
       (text state))))
 
 (def comp-box (create-comp :box init-state update-state render))

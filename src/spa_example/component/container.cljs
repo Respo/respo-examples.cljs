@@ -9,16 +9,16 @@
 (defn hr [props & children]
   (create-element :hr props children))
 
-(defn handle-inc [simple-event dispatch]
-  (dispatch :inc 1))
+(defn handle-inc [simple-event dispatch! mutate!]
+  (dispatch! :inc 1))
 
 (defn handle-dec-with-log [state store]
-  (fn [simple-event dispatch]
+  (fn [simple-event dispatch! mutate!]
     (println "some info:" state store)
-    (dispatch :dec 1)))
+    (dispatch! :dec 1)))
 
 (defn render [store]
-  (fn [state mutate]
+  (fn [state mutate!]
     (div {}
       (div {}
         (span {:attrs {:inner-text "Demo of component with mutate"}})

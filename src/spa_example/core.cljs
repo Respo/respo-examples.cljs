@@ -1,6 +1,6 @@
 
 (ns spa-example.core
-  (:require [respo.core :refer [render]]
+  (:require [respo.core :refer [render!]]
             [spa-example.updater.core :refer [updater]]
             [spa-example.component.container :refer [comp-container]]))
 
@@ -8,12 +8,12 @@
 
 (defonce states-ref (atom {}))
 
-(defn dispatch [op op-data]
+(defn dispatch! [op op-data]
   (reset! store-ref (updater @store-ref op op-data)))
 
 (defn render-app []
   (let [target (.querySelector js/document "#app")]
-    (render (comp-container @store-ref) target dispatch states-ref)))
+    (render! (comp-container @store-ref) target dispatch! states-ref)))
 
 (defn -main []
   (enable-console-print!)
