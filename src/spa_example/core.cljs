@@ -1,6 +1,6 @@
 
 (ns spa-example.core
-  (:require [respo.core :refer [render!]]
+  (:require [respo.core :refer [render! clear-cache!]]
             [spa-example.updater.core :refer [updater]]
             [spa-example.component.container :refer [comp-container]]))
 
@@ -23,6 +23,7 @@
   (println "app started!"))
 
 (defn on-jsload []
+  (clear-cache!)
   (render-app)
   (println "code updated."))
 
