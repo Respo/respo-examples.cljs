@@ -18,7 +18,8 @@
 (deftask dev []
   (comp
     (watch)
-    (reload :on-jsload 'spa-example.core/on-jsload)
+    (reload :on-jsload 'spa-example.core/on-jsload
+            :cljs-asset-path ".")
     (cljs)
     (target)))
 
