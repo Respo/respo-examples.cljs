@@ -10,7 +10,7 @@
                  [adzerk/boot-cljs          "1.7.170-3"   :scope "test"]
                  [adzerk/boot-reload        "0.4.11"      :scope "test"]
                  [mvc-works/hsl             "0.1.2"]
-                 [mvc-works/respo           "0.3.3"]])
+                 [mvc-works/respo           "0.3.5"]])
 
 (require '[adzerk.boot-cljs   :refer [cljs]]
          '[adzerk.boot-reload :refer [reload]])
