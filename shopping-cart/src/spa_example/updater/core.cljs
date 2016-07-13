@@ -8,7 +8,7 @@
     (let [existed? (some #(= (:id %1) op-data) (:added store))
           new-store (-> store
                       (update :all (fn [products]
-                        (-> products (mapv (fn [product]
+                        (->> products (mapv (fn [product]
                           (if (= (:id product) op-data)
                             (update product :inventory dec)
                             product)))))))]

@@ -12,7 +12,7 @@
   (create-element :li props children))
 
 (defn br [props & children]
-  (create-element :li props children))
+  (create-element :br props children))
 
 (defn render [store]
   (fn [state mutate!]
@@ -24,6 +24,7 @@
              (comp-text (str (:title product) " - " (:price product)) nil)
              (br {})
              (button {:attrs {:disabled (<= (:inventory product) 0)}
-                      :event {:click (add-to-cart product)}}))]))))))
+                      :event {:click (add-to-cart product)}}
+                (comp-text "Add to cart" nil)))]))))))
 
 (def comp-product-list (create-comp :product-list render))
