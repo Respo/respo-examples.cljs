@@ -9,6 +9,7 @@
                  [org.clojure/clojure       "1.8.0"       :scope "test"]
                  [adzerk/boot-cljs          "1.7.170-3"   :scope "test"]
                  [adzerk/boot-reload        "0.4.11"      :scope "test"]
+                 [binaryage/devtools        "0.7.2"]
                  [mvc-works/hsl             "0.1.2"]
                  [mvc-works/respo           "0.3.5"]])
 
