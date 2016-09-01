@@ -2,7 +2,7 @@
 (ns spa-example.component.container
   (:require
     [respo.alias :refer [create-comp create-element div hr]]
-    [respo.component.text :refer [comp-text]]
+    [respo.comp.text :refer [comp-text]]
     [spa-example.actions :refer []]
     [spa-example.component.product-list :refer [comp-product-list]]
     [spa-example.component.cart :refer [comp-cart]]))

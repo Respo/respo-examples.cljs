@@ -3,7 +3,7 @@
   (:require
     [clojure.string :as string]
     [spa-example.actions :refer [delete-todo toggle-todo done-edit input-keyup]]
-    [respo.component.text :refer [comp-text]]
+    [respo.comp.text :refer [comp-text]]
     [respo.alias :refer [create-comp create-element div input button]]))
 
 (defn li [props & children]

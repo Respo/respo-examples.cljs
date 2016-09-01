@@ -2,8 +2,8 @@
 (ns spa-example.component.cart
   (:require
     [respo.alias :refer [create-comp create-element div button]]
-    [respo.component.text :refer [comp-text]]
-    [respo.component.debug :refer [comp-debug]]
+    [respo.comp.text :refer [comp-text]]
+    [respo.comp.debug :refer [comp-debug]]
     [spa-example.actions :refer [checkout]]))
 
 (defn h2 [props & children]

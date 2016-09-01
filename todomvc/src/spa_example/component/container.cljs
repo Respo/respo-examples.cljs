@@ -3,7 +3,7 @@
   (:require
     [clojure.string :refer [capitalize]]
     [respo.alias :refer [create-comp create-element div button section header input footer span a]]
-    [respo.component.text :refer [comp-text]]
+    [respo.comp.text :refer [comp-text]]
     [spa-example.actions :refer [try-add-todo toggle-all clear-completed]]
     [spa-example.component.todo :refer [comp-todo]]))
 

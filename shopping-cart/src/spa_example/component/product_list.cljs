@@ -2,7 +2,7 @@
 (ns spa-example.component.product-list
   (:require
     [respo.alias :refer [create-comp create-element div button]]
-    [respo.component.text :refer [comp-text]]
+    [respo.comp.text :refer [comp-text]]
     [spa-example.actions :refer [add-to-cart]]))
 
 (defn ul [props & children]

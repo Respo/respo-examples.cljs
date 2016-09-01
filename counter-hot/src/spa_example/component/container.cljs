@@ -2,7 +2,7 @@
 (ns spa-example.component.container
   (:require
     [respo.alias :refer [create-comp create-element div button]]
-    [respo.component.text :refer [comp-text]]
+    [respo.comp.text :refer [comp-text]]
     [spa-example.actions :refer [increment decrement increment-if-odd increment-async]]))
 
 (defn recent5 [history]
