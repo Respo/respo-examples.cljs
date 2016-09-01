@@ -11,7 +11,7 @@
                  [adzerk/boot-reload        "0.4.11"      :scope "test"]
                  [binaryage/devtools        "0.7.2"]
                  [mvc-works/hsl             "0.1.2"]
-                 [respo                     "0.3.10"]])
+                 [respo                     "0.3.11"]])
 
 (require '[adzerk.boot-cljs   :refer [cljs]]
          '[adzerk.boot-reload :refer [reload]])
