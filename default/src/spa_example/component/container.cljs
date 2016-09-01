@@ -9,11 +9,11 @@
 (defn hr [props & children]
   (create-element :hr props children))
 
-(defn handle-inc [simple-event dispatch! mutate!]
+(defn handle-inc [simple-event dispatch!]
   (dispatch! :inc 1))
 
 (defn handle-dec-with-log [state store]
-  (fn [simple-event dispatch! mutate!]
+  (fn [simple-event dispatch!]
     (println "some info:" state store)
     (dispatch! :dec 1)))
 

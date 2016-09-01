@@ -43,8 +43,8 @@
                         :autocomplete "off"
                         :placeholder "What needs to be done?"
                         :value (:text state)}
-                :event {:keydown (try-add-todo (:text state))
-                        :input (fn [e dispatch! mutate!] (mutate! :text (:value e)))}}))
+                :event {:keydown (try-add-todo (:text state) mutate!)
+                        :input (fn [e dispatch!] (mutate! :text (:value e)))}}))
       (if (not (empty? store))
         (section {:attrs {:class-name "main"}}
           (input {:attrs {:class-name "toggle-all" :type "checkbox"
@@ -68,7 +68,7 @@
                   [filter-name (li {}
                     (a {:attrs {:class-name
                                   (if (= filter-name (:filter state)) "selected")}
-                        :event {:click (fn [e dispatch! mutate!]
+                        :event {:click (fn [e dispatch!]
                           (mutate! :filter filter-name))}}
                       (comp-text (capitalize filter-name) nil)))]))))
             (if (> (count store) remaining)

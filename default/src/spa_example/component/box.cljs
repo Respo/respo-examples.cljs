@@ -10,7 +10,7 @@
   (+ step state))
 
 (defn handle-click [mutate-parent! step]
-  (fn [simple-event dispatch! mutate!]
+  (fn [simple-event dispatch!]
     (mutate-parent! step)))
 
 (defn text [x]

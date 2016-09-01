@@ -37,8 +37,8 @@
       (if (:editing state)
         (input {:attrs {:class-name "edit" :autofocus true
                         :value (:text todo)}
-                :event {:input (fn [e dispatch! mutate!] (mutate! :text (:value e)))
-                        ; :blur (done-edit index (:text state)) ; duplicated event
-                        :keyup (input-keyup index (:text state))}})))))
+                :event {:input (fn [e dispatch!] (mutate! :text (:value e)))
+                        ; :blur (done-edit index (:text state) mutate!) ; duplicated event
+                        :keyup (input-keyup index (:text state) mutate!)}})))))
 
 (def comp-todo (create-comp :todo init-state update-state render))
