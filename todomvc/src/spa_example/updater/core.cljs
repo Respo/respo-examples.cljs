@@ -1,21 +1,24 @@
 
 (ns spa-example.updater.core)
 
-(defn updater [store op op-data]
+(defn updater [store op op-data op-id]
   (case op
     :add-todo
-    (conj store {:text op-data :done false})
+    (conj store {:text op-data :done false :id op-id})
     :delete-todo
-    (cond
-      (= (count store) 0) store
-      (= op-data 0) (subvec store 1)
-      (= op-data (dec (count store))) (into [] (butlast store))
-      :else (into [] (concat (subvec store 0 op-data) (subvec store (inc op-data)))))
+    (->> store (filterv (fn [item]
+      (not= op-data (:id item)))))
     :toggle-todo
-    (update-in store [op-data :done] not)
+    (->> store (mapv (fn [item]
+      (if (= (:id item) op-data)
+        (update item :done not)
+        item))))
     :edit-todo
-    (let [[pos text] op-data]
-      (update store pos #(assoc %1 :text text)))
+    (let [[id text] op-data]
+      (->> store (mapv (fn [item]
+        (if (= id (:id item))
+          (assoc item :text text)
+          item)))))
     :toggle-all
     (->> store (mapv #(update %1 :done not)))
     :clear-completed

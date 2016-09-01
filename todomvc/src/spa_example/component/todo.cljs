@@ -18,7 +18,7 @@
 (defn update-state [state op op-data]
   (assoc state op op-data))
 
-(defn render [todo index]
+(defn render [todo]
   (fn [state mutate!]
     (li {:attrs {:class-name
         (->> ["toggle"
@@ -29,16 +29,16 @@
       (div {:attrs {:class-name "view"}}
         (input {:attrs {:class-name "toggle" :type "checkbox"
                         :checked (:done todo)}
-                :event {:change (toggle-todo index)}})
+                :event {:change (toggle-todo (:id todo))}})
         (label {:event {:dblclick (fn [e dispatch!] (mutate! :editing true))}}
           (comp-text (:text todo) nil))
         (button {:attrs {:class-name "destroy"}
-                 :event {:click (delete-todo index)}}))
+                 :event {:click (delete-todo (:id todo))}}))
       (if (:editing state)
         (input {:attrs {:class-name "edit" :autofocus true
                         :value (:text todo)}
                 :event {:input (fn [e dispatch!] (mutate! :text (:value e)))
                         ; :blur (done-edit index (:text state) mutate!) ; duplicated event
-                        :keyup (input-keyup index (:text state) mutate!)}})))))
+                        :keyup (input-keyup (:id todo) (:text state) mutate!)}})))))
 
 (def comp-todo (create-comp :todo init-state update-state render))

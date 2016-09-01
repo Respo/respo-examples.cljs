@@ -8,8 +8,14 @@
 
 (defonce states-ref (atom {}))
 
+(defonce id-counter (atom 0))
+
+(defn get-id! []
+  (swap! id-counter inc)
+  @id-counter)
+
 (defn dispatch! [op op-data]
-  (reset! store-ref (updater @store-ref op op-data)))
+  (reset! store-ref (updater @store-ref op op-data (get-id!))))
 
 (defn render-app! []
   (let [target (.querySelector js/document "#app")]

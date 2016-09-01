@@ -52,8 +52,8 @@
                   :event {:change toggle-all}})
           (ul {:attrs {:class-name "todo-list"}}
             (->> (filterv (get filters (:filter state)) store)
-              (map-indexed (fn [i todo]
-                [i (comp-todo todo i)]))))))
+              (mapv (fn [todo]
+                [(:id todo) (comp-todo todo)]))))))
       (if (not (empty? store))
         (let [remaining
                 (count (filterv (fn [x] (not (:done x))) store))]
