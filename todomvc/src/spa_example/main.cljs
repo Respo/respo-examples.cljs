@@ -23,11 +23,11 @@
   (enable-console-print!)
   (render-app!)
   (add-watch store-ref :changes render-app!)
-  (println "app started!"))
+  (println "App started."))
 
 (defn on-jsload []
   (clear-cache!)
   (render-app!)
-  (println "code updated."))
+  (println "Code updated."))
 
 (set! (.-onload js/window) -main)

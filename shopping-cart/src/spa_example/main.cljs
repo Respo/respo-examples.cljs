@@ -21,7 +21,7 @@
   (render-app!)
   (add-watch store-ref :changes render-app!)
   (get-all-products dispatch!)
-  (println "App started!"))
+  (println "App started."))
 
 (defn on-jsload []
   (clear-cache!)

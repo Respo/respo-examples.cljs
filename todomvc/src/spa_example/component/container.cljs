@@ -2,7 +2,8 @@
 (ns spa-example.component.container
   (:require
     [clojure.string :refer [capitalize]]
-    [respo.alias :refer [create-comp create-element with-cursor div button section header input footer span a]]
+    [respo.alias :refer [create-comp create-element div button section header input footer span a]]
+    [respo.cursor :refer [with-cursor]]
     [respo.comp.text :refer [comp-text]]
     [spa-example.actions :refer [try-add-todo toggle-all clear-completed]]
     [spa-example.component.todo :refer [comp-todo]]))

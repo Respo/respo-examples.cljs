@@ -1,13 +1,10 @@
 
-(ns spa-example.updater.core)
+(ns spa-example.updater.core
+  (:require [respo.cursor :refer [mutate]]))
 
 (defn updater [store op op-data op-id]
   (case op
-    :states
-      (update store :states
-        (fn [states]
-          (let [[cursor new-state] op-data]
-            (assoc-in states (conj cursor :data) new-state))))
+    :states (update store :states (mutate op-data))
     :add-todo
       (update store :tasks
         (fn [tasks]

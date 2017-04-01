@@ -1,7 +1,8 @@
 
 (ns spa-example.comp.container
   (:require
-    [respo.alias :refer [create-comp create-element with-cursor div span]]
+    [respo.alias :refer [create-comp create-element div span]]
+    [respo.cursor :refer [with-cursor]]
     [spa-example.comp.button :refer [comp-button]]
     [spa-example.comp.box :refer [comp-box]]))
 
