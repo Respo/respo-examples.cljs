@@ -1,5 +1,5 @@
 
-(ns spa-example.component.button
+(ns spa-example.comp.button
   (:require
     [respo.alias :refer [create-comp div span]]
     [hsl.core :refer [hsl]]))

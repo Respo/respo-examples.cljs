@@ -1,12 +1,10 @@
 
-(ns spa-example.core
+(ns spa-example.main
   (:require [respo.core :refer [render! clear-cache!]]
             [spa-example.updater.core :refer [updater]]
             [spa-example.component.container :refer [comp-container]]))
 
-(defonce store-ref (atom []))
-
-(defonce states-ref (atom {}))
+(defonce store-ref (atom {:tasks [] :states {}}))
 
 (defonce id-counter (atom 0))
 
@@ -19,13 +17,12 @@
 
 (defn render-app! []
   (let [target (.querySelector js/document "#app")]
-    (render! (comp-container @store-ref) target dispatch! states-ref)))
+    (render! (comp-container @store-ref) target dispatch!)))
 
 (defn -main []
   (enable-console-print!)
   (render-app!)
   (add-watch store-ref :changes render-app!)
-  (add-watch states-ref :changes render-app!)
   (println "app started!"))
 
 (defn on-jsload []

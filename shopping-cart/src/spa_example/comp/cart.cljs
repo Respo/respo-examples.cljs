@@ -1,5 +1,5 @@
 
-(ns spa-example.component.cart
+(ns spa-example.comp.cart
   (:require
     [respo.alias :refer [create-comp create-element div button]]
     [respo.comp.text :refer [comp-text]]
@@ -22,7 +22,7 @@
   (create-element :i props children))
 
 (defn render [store]
-  (fn [state mutate!]
+  (fn [cursor]
     (let [products
           (->> (:added store)
             (mapv (fn [item]

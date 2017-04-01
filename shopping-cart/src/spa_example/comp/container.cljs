@@ -1,11 +1,11 @@
 
-(ns spa-example.component.container
+(ns spa-example.comp.container
   (:require
     [respo.alias :refer [create-comp create-element div hr]]
     [respo.comp.text :refer [comp-text]]
     [spa-example.actions :refer []]
-    [spa-example.component.product-list :refer [comp-product-list]]
-    [spa-example.component.cart :refer [comp-cart]]))
+    [spa-example.comp.product-list :refer [comp-product-list]]
+    [spa-example.comp.cart :refer [comp-cart]]))
 
 (defn h1 [props & children]
   (create-element :h1 props children))
@@ -14,7 +14,7 @@
   (create-element :h2 props children))
 
 (defn render [store]
-  (fn [state mutate!]
+  (fn [cursor]
     (div {:attrs {:class-name "app"}}
       (h1 {} (comp-text "Shopping Cart Example" nil))
       (hr {})
