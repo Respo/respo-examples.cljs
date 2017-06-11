@@ -6,5 +6,5 @@
  :builds {:app {:output-dir "target"
                 :asset-path "target"
                 :target :browser
-                :modules {:main {:entries [spa-example.main]}}
-                :devtools {:after-load spa-example.main/on-jsload}}}}
+                :modules {:main {:entries [app.main]}}
+                :devtools {:after-load app.main/on-jsload}}}}
