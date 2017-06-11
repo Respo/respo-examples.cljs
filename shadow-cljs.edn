@@ -1,0 +1,10 @@
+
+{:source-paths ["src"]
+ :dependencies [[mvc-works/hsl "0.1.2"]
+                [respo/ui "0.1.9"]
+                [respo "0.4.3"]]
+ :builds {:app {:output-dir "target"
+                :asset-path "target"
+                :target :browser
+                :modules {:main {:entries [spa-example.main]}}
+                :devtools {:after-load spa-example.main/on-jsload}}}}
