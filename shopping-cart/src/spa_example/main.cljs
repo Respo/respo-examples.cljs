@@ -3,8 +3,7 @@
   (:require [respo.core :refer [render! clear-cache!]]
             [spa-example.updater.core :refer [updater]]
             [spa-example.comp.container :refer [comp-container]]
-            [spa-example.actions :refer [get-all-products]]
-            [devtools.core :as devtools]))
+            [spa-example.actions :refer [get-all-products]]))
 
 (defonce store-ref (atom {:all [] :added [] :last-checkout nil}))
 
@@ -16,7 +15,6 @@
     (render! (comp-container @store-ref) target dispatch!)))
 
 (defn -main []
-  (devtools/install!)
   (enable-console-print!)
   (render-app!)
   (add-watch store-ref :changes render-app!)

@@ -31,7 +31,7 @@
                 (assoc product :quantity (:quantity item))))))
           total (apply + (map #(* (:price %1) (:quantity %1)) products))
           checkout-status (:last-checkout store)]
-      (div {:attrs {:class-name "cart"}}
+      (div {:class-name "cart"}
         (h2 {} (comp-text "Your cart" nil))
         (if (empty? products)
           (p {}
@@ -44,7 +44,7 @@
         (p {}
           (comp-text (str "Total: " total) nil))
         (p {}
-          (button {:attrs {:disabled (empty? products)}
+          (button {:disabled (empty? products)
                    :event {:click (checkout products)}}
             (comp-text "Checkout")))
         (if (some? checkout-status)

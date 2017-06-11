@@ -34,44 +34,43 @@
     (let [states (:states store)
           tasks (:tasks store)
           state (or (:data states) initial-state)]
-      (section {:attrs {:class-name "todoapp"}}
-        (header {:attrs {:class-name "header"}}
+      (section  {:class-name "todoapp"}
+        (header {:class-name "header"}
           (h1 {} (comp-text "todos" nil))
-          (input {:attrs {:autofocus true :class-name "new-todo"
-                          :autocomplete "off"
-                          :placeholder "What needs to be done?"
-                          :value (:text state)}
+          (input {:autofocus true :class-name "new-todo"
+                  :autocomplete "off"
+                  :placeholder "What needs to be done?"
+                  :value (:text state)
                   :event {:keydown (try-add-todo cursor state)
                           :input (fn [e dispatch!]
                                     (dispatch! :states [cursor (assoc state   :text (:value e))]))}}))
         (if (not (empty? tasks))
-          (section {:attrs {:class-name "main"}}
-            (input {:attrs {:class-name "toggle-all" :type "checkbox"
-                            :checked (every? #(:done %1) tasks)}
+          (section {:class-name "main"}
+            (input {:class-name "toggle-all" :type "checkbox"
+                    :checked (every? #(:done %1) tasks)
                     :event {:change toggle-all}})
-            (ul {:attrs {:class-name "todo-list"}}
+            (ul {:class-name "todo-list"}
               (->> (filterv (get filters (:filter state)) tasks)
                 (mapv (fn [todo]
                   [(:id todo) (with-cursor (:id todo) (comp-todo (get states (:id todo)) todo))]))))))
         (if (not (empty? tasks))
           (let [remaining
                   (count (filterv (fn [x] (not (:done x))) tasks))]
-            (footer {:attrs {:class-name "footer"}}
-              (span {:attrs {:class-name "todo-count"}}
+            (footer {:class-name "footer"}
+              (span {:class-name "todo-count"}
                 (strong {}
                   (comp-text remaining))
                 (comp-text (str " " (pluralize "item" remaining) " left") nil))
-              (ul {:attrs {:class-name "filters"}}
+              (ul {:class-name "filters"}
                 (->> (keys filters)
                   (map (fn [filter-name]
                     [filter-name (li {}
-                      (a {:attrs {:class-name
-                                    (if (= filter-name (:filter state)) "selected")}
+                      (a {:class-name (if (= filter-name (:filter state)) "selected")
                           :event {:click (fn [e dispatch!]
                             (dispatch! :states [cursor (assoc state :filter filter-name)]))}}
                         (comp-text (capitalize (str filter-name)) nil)))]))))
               (if (> (count tasks) remaining)
-                (button {:attrs {:class-name "clear-completed"}
+                (button {:class-name "clear-completed"
                          :event {:click clear-completed}}
                   (comp-text "Clear complited" nil))))))))))
 

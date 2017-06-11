@@ -5,11 +5,11 @@
   "repository": "git@github.com:Respo/respo-examples.git",
   "author": "jiyinyiyong <jiyinyiyong@gmail.com>",
   "scripts": {
-    "load-counter": "cd counter/ && ../node_modules/.bin/shadow-cljs -b app --dev",
-    "load-counter-hot": "cd counter-hot/ && ../node_modules/.bin/shadow-cljs -b app --dev",
-    "load-buttons": "cd buttons/ && ../node_modules/.bin/shadow-cljs -b app --dev",
-    "load-shopping-cart": "cd shopping-cart/ && ../node_modules/.bin/shadow-cljs -b app --dev",
-    "load-todomvc": "cd todomvc/ && ../node_modules/.bin/shadow-cljs -b app --dev",
+    "counter": "cd counter/ && ../node_modules/.bin/shadow-cljs -b app --dev",
+    "counter-hot": "cd counter-hot/ && ../node_modules/.bin/shadow-cljs -b app --dev",
+    "buttons": "cd buttons/ && ../node_modules/.bin/shadow-cljs -b app --dev",
+    "shopping-cart": "cd shopping-cart/ && ../node_modules/.bin/shadow-cljs -b app --dev",
+    "todomvc": "cd todomvc/ && ../node_modules/.bin/shadow-cljs -b app --dev",
     "serve": "http-server -c-1 -s"
   },
   "license": "MIT",

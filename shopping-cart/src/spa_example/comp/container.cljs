@@ -15,7 +15,7 @@
 
 (defn render [store]
   (fn [cursor]
-    (div {:attrs {:class-name "app"}}
+    (div {:class-name "app"}
       (h1 {} (comp-text "Shopping Cart Example" nil))
       (hr {})
       (h2 {} (comp-text "Products" nil))

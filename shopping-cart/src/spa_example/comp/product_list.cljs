@@ -23,7 +23,7 @@
            (li {}
              (comp-text (str (:title product) " - " (:price product)) nil)
              (br {})
-             (button {:attrs {:disabled (<= (:inventory product) 0)}
+             (button {:disabled (<= (:inventory product) 0)
                       :event {:click (add-to-cart product)}}
                 (comp-text "Add to cart" nil)))]))))))
 

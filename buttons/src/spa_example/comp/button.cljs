@@ -2,6 +2,7 @@
 (ns spa-example.comp.button
   (:require
     [respo.alias :refer [create-comp div span]]
+    [respo.comp.text :refer [comp-text]]
     [hsl.core :refer [hsl]]))
 
 (defn render [text on-click]
@@ -13,6 +14,6 @@
                   :margin "0 8px"
                   :cursor "pointer"}
           :event {:click on-click}}
-      (span {:attrs {:inner-text text}}))))
+      (comp-text text))))
 
 (def comp-button (create-comp :button render))

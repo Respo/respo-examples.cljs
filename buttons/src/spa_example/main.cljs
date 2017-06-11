@@ -7,6 +7,7 @@
 (defonce store-ref (atom {:point 0 :states {}}))
 
 (defn dispatch! [op op-data]
+  (println "dispatch:" op op-data)
   (reset! store-ref (updater @store-ref op op-data)))
 
 (defn render-app []

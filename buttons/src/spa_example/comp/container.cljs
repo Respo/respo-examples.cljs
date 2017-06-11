@@ -2,6 +2,7 @@
 (ns spa-example.comp.container
   (:require
     [respo.alias :refer [create-comp create-element div span]]
+    [respo.comp.text :refer [comp-text]]
     [respo.cursor :refer [with-cursor]]
     [spa-example.comp.button :refer [comp-button]]
     [spa-example.comp.box :refer [comp-box]]))
@@ -24,19 +25,19 @@
           state (:data states)]
       (div {}
         (div {}
-          (span {:attrs {:inner-text "Demo of component with mutate"}})
-          (comp-box state 5))
+          (comp-text "Demo of component with mutate")
+          (comp-box states 5))
         (hr {})
-        (span {:attrs {:inner-text "Demo of list of them"}})
+        (comp-text "Demo of list of them")
         (div {}
           (->> (range 10)
             (map-indexed (fn [index n]
               [index (with-cursor n (comp-box (get states n) n))]))))
         (hr {})
         (div {}
-          (span {:attrs {:inner-text "Demo of dispatch:"}})
+          (comp-text "Demo of dispatch:")
           (comp-button "inc" handle-inc)
           (comp-button "dec" (handle-dec-with-log state store))
-          (span {:attrs {:inner-text (str store)}}))))))
+          (comp-text (str store)))))))
 
 (def comp-container (create-comp :container render))
