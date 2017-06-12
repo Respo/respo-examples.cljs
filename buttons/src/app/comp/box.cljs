@@ -1,7 +1,8 @@
 
 (ns app.comp.box
+  (:require-macros [respo.macros :refer [defcomp]])
   (:require
-    [respo.alias :refer [create-comp div span]]
+    [respo.alias :refer [div]]
     [respo.comp.text :refer [comp-text]]
     [app.comp.button :refer [comp-button]]))
 
@@ -11,12 +12,9 @@
   (fn [e dispatch!]
     (dispatch! :states [cursor next-state])))
 
-(defn render [states n]
-  (fn [cursor]
-    (let [state (or (:data states) initial-state)]
-      (div {}
-        (comp-text (str n ". ") nil)
-        (comp-button "inc" (handle-click cursor (+ state n)))
-        (comp-text state nil)))))
-
-(def comp-box (create-comp :box render))
+(defcomp comp-box [states n]
+  (let [state (or (:data states) initial-state)]
+    (div {}
+      (comp-text (str n ". ") nil)
+      (comp-button "inc" (handle-click cursor (+ state n)))
+      (comp-text state nil))))
