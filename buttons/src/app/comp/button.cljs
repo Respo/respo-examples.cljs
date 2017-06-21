@@ -1,9 +1,8 @@
 
 (ns app.comp.button
-  (:require-macros [respo.macros :refer [defcomp]])
+  (:require-macros [respo.macros :refer [defcomp <> div span]])
   (:require
-    [respo.alias :refer [div]]
-    [respo.comp.text :refer [comp-text]]
+    [respo.core :refer [create-comp]]
     [hsl.core :refer [hsl]]))
 
 (defcomp comp-button [text on-click]
@@ -14,4 +13,4 @@
                 :margin "0 8px"
                 :cursor "pointer"}
         :event {:click on-click}}
-    (comp-text text)))
+    (<> span text nil)))

@@ -1,20 +1,10 @@
 
 (ns app.comp.cart
-  (:require-macros [respo.macros :refer [defcomp]])
+  (:require-macros [respo.macros :refer [defcomp <> div button h2 p span ul li]])
   (:require
-    [respo.alias :refer [create-element div button h2 p]]
-    [respo.comp.text :refer [comp-text]]
-    [respo.comp.debug :refer [comp-debug]]
+    [respo.core :refer [create-comp create-element]]
+    [respo.comp.inspect :refer [comp-inspect]]
     [app.actions :refer [checkout]]))
-
-(defn ul [props & children]
-  (create-element :ul props children))
-
-(defn li [props & children]
-  (create-element :li props children))
-
-(defn i [props & children]
-  (create-element :i props children))
 
 (defcomp comp-cart [store]
   (let [products
@@ -26,21 +16,21 @@
         total (apply + (map #(* (:price %1) (:quantity %1)) products))
         checkout-status (:last-checkout store)]
     (div {:class-name "cart"}
-      (h2 {} (comp-text "Your cart" nil))
+      (h2 {} (<> span "Your cart" nil))
       (if (empty? products)
         (p {}
-          (i {}
-            (comp-text "Please add some products to cart" nil))))
+          (create-element :i {}
+            (<> span "Please add some products to cart" nil))))
       (ul {}
         (->> products (mapv (fn [product]
             [(:id product) (li {}
-              (comp-text (str (:title product) " - " (:price product) " x " (:quantity product)) nil))]))))
+              (<> span (str (:title product) " - " (:price product) " x " (:quantity product)) nil))]))))
       (p {}
-        (comp-text (str "Total: " total) nil))
+        (<> span (str "Total: " total) nil))
       (p {}
         (button {:disabled (empty? products)
                  :event {:click (checkout products)}}
-          (comp-text "Checkout")))
+          (<> span "Checkout" nil)))
       (if (some? checkout-status)
         (p {}
-          (comp-text (str "Checkout " checkout-status)))))))
+          (<> span (str "Checkout " checkout-status) nil))))))

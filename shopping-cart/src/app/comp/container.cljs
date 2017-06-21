@@ -1,18 +1,17 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp]])
+  (:require-macros [respo.macros :refer [defcomp <> div hr h1 h2 span]])
   (:require
-    [respo.alias :refer [create-element div hr h1 h2]]
-    [respo.comp.text :refer [comp-text]]
+    [respo.core :refer [create-comp]]
     [app.actions :refer []]
     [app.comp.product-list :refer [comp-product-list]]
     [app.comp.cart :refer [comp-cart]]))
 
 (defcomp comp-container [store]
   (div {:class-name "app"}
-    (h1 {} (comp-text "Shopping Cart Example" nil))
+    (<> h1 "Shopping Cart Example" nil)
     (hr {})
-    (h2 {} (comp-text "Products" nil))
+    (<> h2 "Products" nil)
     (comp-product-list store)
     (hr {})
     (comp-cart store)))

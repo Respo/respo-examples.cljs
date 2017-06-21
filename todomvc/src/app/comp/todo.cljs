@@ -1,17 +1,10 @@
 
-(ns app.component.todo
-  (:require-macros [respo.macros :refer [defcomp]])
+(ns app.comp.todo
+  (:require-macros [respo.macros :refer [defcomp <> div input button span li]])
   (:require
     [clojure.string :as string]
     [app.actions :refer [delete-todo toggle-todo input-keyup]]
-    [respo.comp.text :refer [comp-text]]
-    [respo.alias :refer [create-element div input button]]))
-
-(defn li [props & children]
-  (create-element :li props children))
-
-(defn label [props & children]
-  (create-element :label props children))
+    [respo.core :refer [create-comp create-element]]))
 
 (def initial-state {:text "" :editing false})
 
@@ -27,8 +20,8 @@
           (input {:class-name "toggle" :type "checkbox"
                   :checked (:done todo)
                   :event {:change (toggle-todo (:id todo))}})
-          (label {:event {:dblclick (fn [e dispatch!] (dispatch! :states [cursor (assoc state :editing true)]))}}
-            (comp-text (:text todo) nil))
+          (create-element :label {:event {:dblclick (fn [e dispatch!] (dispatch! :states [cursor (assoc state :editing true)]))}}
+            (<> span (:text todo) nil))
           (button {:class-name "destroy"
                    :event {:click (delete-todo (:id todo))}}))
         (if (:editing state)

@@ -1,9 +1,8 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp]])
+  (:require-macros [respo.macros :refer [defcomp <> div hr span]])
   (:require
-    [respo.alias :refer [create-element div hr]]
-    [respo.comp.text :refer [comp-text]]
+    [respo.core :refer [create-comp]]
     [respo.cursor :refer [with-cursor]]
     [app.comp.button :refer [comp-button]]
     [app.comp.box :refer [comp-box]]))
@@ -21,17 +20,17 @@
         state (:data states)]
     (div {}
       (div {}
-        (comp-text "Demo of component with mutate")
+        (<> span "Demo of component with mutate" nil)
         (comp-box states 5))
       (hr {})
-      (comp-text "Demo of list of them")
+      (<> span "Demo of list of them" nil)
       (div {}
         (->> (range 10)
           (map-indexed (fn [index n]
             [index (with-cursor n (comp-box (get states n) n))]))))
       (hr {})
       (div {}
-        (comp-text "Demo of dispatch:")
+        (<> span "Demo of dispatch:" nil)
         (comp-button "inc" handle-inc)
         (comp-button "dec" (handle-dec-with-log state store))
-        (comp-text (str store))))))
+        (<> span (str store) nil)))))

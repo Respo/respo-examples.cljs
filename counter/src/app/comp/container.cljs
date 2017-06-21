@@ -1,20 +1,18 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp]])
+  (:require-macros [respo.macros :refer [defcomp <> div button span]])
   (:require
-    [respo.alias :refer [create-element div button]]
-    [respo.comp.text :refer [comp-text]]
+    [respo.core :refer [create-comp]]
     [app.actions :refer [increment decrement increment-if-odd increment-async]]))
 
-(defcomp comp-container [store]
+(defcomp comp-container (store)
   (div {}
-    (div {}
-      (comp-text (str "Clicked: " store " times") nil))
+    (<> div (str "Clicked: " store " times") nil)
     (button {:event {:click increment}}
-      (comp-text "+" nil))
+      (<> span "+" nil))
     (button {:event {:click decrement}}
-      (comp-text "-" nil))
+      (<> span "-" nil))
     (button {:event {:click (increment-if-odd store)}}
-      (comp-text "Increment if odd" nil))
+      (<> span "Increment if odd" nil))
     (button {:event {:click increment-async}}
-      (comp-text "Increment async" nil))))
+      (<> span "Increment async" nil))))

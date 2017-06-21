@@ -11,7 +11,7 @@ More on Respo https://github.com/Respo/respo/wiki/Quick-Start
 ```bash
 yarn
 yarn serve
-# more tty
+# another tty
 yarn counter
 # open localhost:8080/counter/ , notice the path for example
 ```

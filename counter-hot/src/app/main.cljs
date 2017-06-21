@@ -4,19 +4,18 @@
             [app.updater.core :refer [updater]]
             [app.comp.container :refer [comp-container]]))
 
-(defonce store-ref (atom {:count 0 :history []}))
+(defonce *store (atom {:count 0 :history []}))
 
 (defn dispatch! [op op-data]
-  (reset! store-ref (updater @store-ref op op-data)))
+  (reset! *store (updater @*store op op-data)))
 
 (defn render-app! []
   (let [target (.querySelector js/document "#app")]
-    (render! (comp-container @store-ref) target dispatch!)))
+    (render! target (comp-container @*store) dispatch!)))
 
 (defn -main []
-  (enable-console-print!)
   (render-app!)
-  (add-watch store-ref :changes render-app!)
+  (add-watch *store :changes render-app!)
   (println "App started."))
 
 (defn on-jsload []

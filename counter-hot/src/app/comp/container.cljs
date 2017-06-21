@@ -1,9 +1,8 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp]])
+  (:require-macros [respo.macros :refer [defcomp <> div button span]])
   (:require
-    [respo.alias :refer [create-element div button]]
-    [respo.comp.text :refer [comp-text]]
+    [respo.core :refer [create-comp]]
     [app.actions :refer [increment decrement increment-if-odd increment-async]]))
 
 (defn recent5 [history]
@@ -14,14 +13,14 @@
 (defcomp comp-container [store]
   (div {}
     (div {}
-      (comp-text (str "Clicked: " (:count store) " times") nil))
+      (<> span (str "Clicked: " (:count store) " times") nil))
     (button {:event {:click increment}}
-      (comp-text "+" nil))
+      (<> span "+" nil))
     (button {:event {:click decrement}}
-      (comp-text "-" nil))
+      (<> span "-" nil))
     (button {:event {:click (increment-if-odd (:count store))}}
-      (comp-text "Increment if odd" nil))
+      (<> span "Increment if odd" nil))
     (button {:event {:click increment-async}}
-      (comp-text "Increment async" nil))
+      (<> span "Increment async" nil))
     (div {}
-      (comp-text (str "Recent History: " (recent5 (:history store))) nil))))
+      (<> span (str "Recent History: " (recent5 (:history store))) nil))))
