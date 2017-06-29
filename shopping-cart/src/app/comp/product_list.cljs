@@ -14,5 +14,5 @@
            (<> span (str (:title product) " - " (:price product)) nil)
            (br {})
            (button {:disabled (<= (:inventory product) 0)
-                    :event {:click (add-to-cart product)}}
+                    :on {:click (add-to-cart product)}}
               (<> span "Add to cart" nil)))])))))

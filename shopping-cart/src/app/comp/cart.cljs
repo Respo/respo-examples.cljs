@@ -29,7 +29,7 @@
         (<> span (str "Total: " total) nil))
       (p {}
         (button {:disabled (empty? products)
-                 :event {:click (checkout products)}}
+                 :on {:click (checkout products)}}
           (<> span "Checkout" nil)))
       (if (some? checkout-status)
         (p {}

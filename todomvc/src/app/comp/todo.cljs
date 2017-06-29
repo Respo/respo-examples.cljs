@@ -19,13 +19,13 @@
         (div {:class-name "view"}
           (input {:class-name "toggle" :type "checkbox"
                   :checked (:done todo)
-                  :event {:change (toggle-todo (:id todo))}})
-          (create-element :label {:event {:dblclick (fn [e dispatch!] (dispatch! :states [cursor (assoc state :editing true)]))}}
+                  :on {:change (toggle-todo (:id todo))}})
+          (create-element :label {:on {:dblclick (fn [e dispatch!] (dispatch! :states [cursor (assoc state :editing true)]))}}
             (<> span (:text todo) nil))
           (button {:class-name "destroy"
-                   :event {:click (delete-todo (:id todo))}}))
+                   :on {:click (delete-todo (:id todo))}}))
         (if (:editing state)
           (input {:class-name "edit" :autofocus true
                   :value (:text todo)
-                  :event {:input (fn [e dispatch!] (dispatch! :states [cursor (assoc state :text (:value e))]))
+                  :on {:input (fn [e dispatch!] (dispatch! :states [cursor (assoc state :text (:value e))]))
                           :keyup (input-keyup (:id todo) cursor state)}})))))

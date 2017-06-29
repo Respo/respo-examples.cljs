@@ -12,5 +12,5 @@
                 :color "white"
                 :margin "0 8px"
                 :cursor "pointer"}
-        :event {:click on-click}}
+        :on {:click on-click}}
     (<> span text nil)))

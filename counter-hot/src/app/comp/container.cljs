@@ -14,13 +14,13 @@
   (div {}
     (div {}
       (<> span (str "Clicked: " (:count store) " times") nil))
-    (button {:event {:click increment}}
+    (button {:on {:click increment}}
       (<> span "+" nil))
-    (button {:event {:click decrement}}
+    (button {:on {:click decrement}}
       (<> span "-" nil))
-    (button {:event {:click (increment-if-odd (:count store))}}
+    (button {:on {:click (increment-if-odd (:count store))}}
       (<> span "Increment if odd" nil))
-    (button {:event {:click increment-async}}
+    (button {:on {:click increment-async}}
       (<> span "Increment async" nil))
     (div {}
       (<> span (str "Recent History: " (recent5 (:history store))) nil))))

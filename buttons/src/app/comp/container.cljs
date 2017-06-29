@@ -1,9 +1,8 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp <> div hr span]])
+  (:require-macros [respo.macros :refer [defcomp cursor-> <> div hr span]])
   (:require
     [respo.core :refer [create-comp]]
-    [respo.cursor :refer [with-cursor]]
     [app.comp.button :refer [comp-button]]
     [app.comp.box :refer [comp-box]]))
 
@@ -27,7 +26,7 @@
       (div {}
         (->> (range 10)
           (map-indexed (fn [index n]
-            [index (with-cursor n (comp-box (get states n) n))]))))
+            [index (cursor-> n comp-box states n)]))))
       (hr {})
       (div {}
         (<> span "Demo of dispatch:" nil)

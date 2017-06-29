@@ -1,11 +1,10 @@
 
 (ns app.comp.container
   (:require-macros
-    [respo.macros :refer [defcomp <> div button section header input footer span a h1 ul li]])
+    [respo.macros :refer [defcomp cursor-> <> div button section header input footer span a h1 ul li]])
   (:require
     [clojure.string :refer [capitalize]]
     [respo.core :refer [create-element create-comp]]
-    [respo.cursor :refer [with-cursor]]
     [app.actions :refer [try-add-todo toggle-all clear-completed]]
     [app.comp.todo :refer [comp-todo]]))
 
@@ -29,18 +28,18 @@
                 :autocomplete "off"
                 :placeholder "What needs to be done?"
                 :value (:text state)
-                :event {:keydown (try-add-todo cursor state)
+                :on {:keydown (try-add-todo cursor state)
                         :input (fn [e dispatch!]
                                   (dispatch! :states [cursor (assoc state   :text (:value e))]))}}))
       (if (not (empty? tasks))
         (section {:class-name "main"}
           (input {:class-name "toggle-all" :type "checkbox"
                   :checked (every? #(:done %1) tasks)
-                  :event {:change toggle-all}})
+                  :on {:change toggle-all}})
           (ul {:class-name "todo-list"}
             (->> (filterv (get filters (:filter state)) tasks)
               (mapv (fn [todo]
-                [(:id todo) (with-cursor (:id todo) (comp-todo (get states (:id todo)) todo))]))))))
+                [(:id todo) (cursor-> (:id todo) comp-todo states todo)]))))))
       (if (not (empty? tasks))
         (let [remaining
                 (count (filterv (fn [x] (not (:done x))) tasks))]
@@ -54,10 +53,10 @@
                 (map (fn [filter-name]
                   [filter-name (li {}
                     (a {:class-name (if (= filter-name (:filter state)) "selected")
-                        :event {:click (fn [e dispatch!]
+                        :on {:click (fn [e dispatch!]
                           (dispatch! :states [cursor (assoc state :filter filter-name)]))}}
                       (<> span (capitalize (str filter-name)) nil)))]))))
             (if (> (count tasks) remaining)
               (button {:class-name "clear-completed"
-                       :event {:click clear-completed}}
+                       :on {:click clear-completed}}
                 (<> span "Clear complited" nil)))))))))

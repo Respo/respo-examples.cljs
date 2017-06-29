@@ -8,11 +8,11 @@
 (defcomp comp-container (store)
   (div {}
     (<> div (str "Clicked: " store " times") nil)
-    (button {:event {:click increment}}
+    (button {:on {:click increment}}
       (<> span "+" nil))
-    (button {:event {:click decrement}}
+    (button {:on {:click decrement}}
       (<> span "-" nil))
-    (button {:event {:click (increment-if-odd store)}}
+    (button {:on {:click (increment-if-odd store)}}
       (<> span "Increment if odd" nil))
-    (button {:event {:click increment-async}}
+    (button {:on {:click increment-async}}
       (<> span "Increment async" nil))))
