@@ -28,9 +28,9 @@
                 :autocomplete "off"
                 :placeholder "What needs to be done?"
                 :value (:text state)
-                :on {:keydown (try-add-todo cursor state)
+                :on {:keydown (try-add-todo *cursor* state)
                         :input (fn [e dispatch!]
-                                  (dispatch! :states [cursor (assoc state   :text (:value e))]))}}))
+                                  (dispatch! :states [*cursor* (assoc state   :text (:value e))]))}}))
       (if (not (empty? tasks))
         (section {:class-name "main"}
           (input {:class-name "toggle-all" :type "checkbox"
@@ -54,7 +54,7 @@
                   [filter-name (li {}
                     (a {:class-name (if (= filter-name (:filter state)) "selected")
                         :on {:click (fn [e dispatch!]
-                          (dispatch! :states [cursor (assoc state :filter filter-name)]))}}
+                          (dispatch! :states [*cursor* (assoc state :filter filter-name)]))}}
                       (<> span (capitalize (str filter-name)) nil)))]))))
             (if (> (count tasks) remaining)
               (button {:class-name "clear-completed"

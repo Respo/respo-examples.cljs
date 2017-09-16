@@ -22,7 +22,7 @@
           (create-element :i {}
             (<> span "Please add some products to cart" nil))))
       (ul {}
-        (->> products (mapv (fn [product]
+        (->> products (map (fn [product]
             [(:id product) (li {}
               (<> span (str (:title product) " - " (:price product) " x " (:quantity product)) nil))]))))
       (p {}
