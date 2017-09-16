@@ -14,15 +14,15 @@
   (let [target (.querySelector js/document "#app")]
     (render! target (comp-container @*store) dispatch!)))
 
-(defn -main []
+(defn main! []
   (render-app!)
   (add-watch *store :changes render-app!)
   (get-all-products dispatch!)
   (println "App started."))
 
-(defn on-jsload []
+(defn reload! []
   (clear-cache!)
   (render-app!)
   (println "Code updated."))
 
-(set! (.-onload js/window) -main)
+(set! (.-onload js/window) main!)

@@ -1,11 +1,11 @@
 
 {:source-paths ["src"]
- :dependencies [[mvc-works/hsl "0.1.2"]
-                [respo/ui "0.1.9"]
-                [respo "0.5.13"]]
+ :dependencies [[mvc-works/hsl  "0.1.2"]
+                [respo/ui       "0.1.9"]
+                [respo          "0.6.0"]]
  :builds {:app {:output-dir "target"
                 :asset-path "target"
                 :target :browser
                 :modules {:main {:entries [app.main]}}
-                :devtools {:after-load app.main/on-jsload
+                :devtools {:after-load app.main/reload!
                            :preloads [shadow.cljs.devtools.client.hud]}}}}
