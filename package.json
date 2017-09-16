@@ -10,6 +10,7 @@
     "buttons": "cd buttons/ && shadow-cljs watch app",
     "shopping-cart": "cd shopping-cart/ && shadow-cljs watch app",
     "todomvc": "cd todomvc/ && shadow-cljs watch app",
+    "hiccup": "cd hiccup/ && shadow-cljs watch app",
     "serve": "http-server -c-1 -s"
   },
   "license": "MIT",

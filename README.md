@@ -24,6 +24,7 @@ yarn counter
 yarn counter-hot
 yarn shopping-cart
 yarn todomvc
+yarn hiccup
 ```
 
 ### License
