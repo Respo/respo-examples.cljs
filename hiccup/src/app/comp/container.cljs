@@ -18,4 +18,4 @@
       [:header.app-header "This is header"]
       ; need to use parantheses for components
       (comp-piece)
-      "DSM demo"]))
+      "Hiccup DSL demo"]))
