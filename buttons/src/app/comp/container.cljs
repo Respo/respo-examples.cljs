@@ -1,6 +1,6 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp cursor-> <> div hr span]])
+  (:require-macros [respo.macros :refer [defcomp list-> cursor-> <> div hr span]])
   (:require
     [respo.core :refer [create-comp]]
     [app.comp.button :refer [comp-button]]
@@ -23,7 +23,7 @@
         (comp-box states 5))
       (hr {})
       (<> span "Demo of list of them" nil)
-      (div {}
+      (list-> :div {}
         (->> (range 10)
           (map-indexed (fn [index n]
             [index (cursor-> n comp-box states n)]))))

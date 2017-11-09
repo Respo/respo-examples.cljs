@@ -1,6 +1,6 @@
 
 (ns app.comp.cart
-  (:require-macros [respo.macros :refer [defcomp <> div button h2 p span ul li]])
+  (:require-macros [respo.macros :refer [defcomp list-> <> div button h2 p span ul li]])
   (:require
     [respo.core :refer [create-comp create-element]]
     [respo.comp.inspect :refer [comp-inspect]]
@@ -21,7 +21,7 @@
         (p {}
           (create-element :i {}
             (<> span "Please add some products to cart" nil))))
-      (ul {}
+      (list-> :ul {}
         (->> products (map (fn [product]
             [(:id product) (li {}
               (<> span (str (:title product) " - " (:price product) " x " (:quantity product)) nil))]))))

@@ -5,17 +5,15 @@
   "repository": "git@github.com:Respo/respo-examples.git",
   "author": "jiyinyiyong <jiyinyiyong@gmail.com>",
   "scripts": {
-    "counter": "cd counter/ && shadow-cljs watch app",
-    "counter-hot": "cd counter-hot/ && shadow-cljs watch app",
-    "buttons": "cd buttons/ && shadow-cljs watch app",
-    "shopping-cart": "cd shopping-cart/ && shadow-cljs watch app",
-    "todomvc": "cd todomvc/ && shadow-cljs watch app",
-    "hiccup": "cd hiccup/ && shadow-cljs watch app",
-    "serve": "http-server -c-1 -s"
+    "counter": "cd counter/ && cp index.html target/ && shadow-cljs watch app",
+    "counter-hot": "cd counter-hot/ && cp index.html target/ && shadow-cljs watch app",
+    "buttons": "cd buttons/ && cp index.html target/ && shadow-cljs watch app",
+    "shopping-cart": "cd shopping-cart/ && cp index.html target/ && shadow-cljs watch app",
+    "todomvc": "cd todomvc/ && cp index.html target/ && shadow-cljs watch app",
+    "hiccup": "cd hiccup/ && cp index.html target/ && shadow-cljs watch app"
   },
   "license": "MIT",
   "devDependencies": {
-    "http-server": "^0.10.0",
     "shadow-cljs": "^0.18.7"
   }
 }

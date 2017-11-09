@@ -1,7 +1,7 @@
 
 (ns app.comp.container
   (:require-macros
-    [respo.macros :refer [defcomp cursor-> <> div button section header input footer span a h1 ul li]])
+    [respo.macros :refer [defcomp cursor-> list-> <> div button section header input footer span a h1 ul li]])
   (:require
     [clojure.string :refer [capitalize]]
     [respo.core :refer [create-element create-comp]]
@@ -36,7 +36,7 @@
           (input {:class-name "toggle-all" :type "checkbox"
                   :checked (every? #(:done %1) tasks)
                   :on {:change toggle-all}})
-          (ul {:class-name "todo-list"}
+          (list-> :ul {:class-name "todo-list"}
             (->> (filterv (get filters (:filter state)) tasks)
               (mapv (fn [todo]
                 [(:id todo) (cursor-> (:id todo) comp-todo states todo)]))))))
@@ -48,7 +48,7 @@
               (create-element :strong {}
                 (<> span remaining nil))
               (<> span (str " " (pluralize "item" remaining) " left") nil))
-            (ul {:class-name "filters"}
+            (list-> :ul {:class-name "filters"}
               (->> (keys filters)
                 (map (fn [filter-name]
                   [filter-name (li {}
