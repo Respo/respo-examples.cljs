@@ -5,15 +5,16 @@
   "repository": "git@github.com:Respo/respo-examples.git",
   "author": "jiyinyiyong <jiyinyiyong@gmail.com>",
   "scripts": {
-    "counter": "cd counter/ && cp index.html target/ && shadow-cljs watch app",
-    "counter-hot": "cd counter-hot/ && cp index.html target/ && shadow-cljs watch app",
-    "buttons": "cd buttons/ && cp index.html target/ && shadow-cljs watch app",
-    "shopping-cart": "cd shopping-cart/ && cp index.html target/ && shadow-cljs watch app",
-    "todomvc": "cd todomvc/ && cp index.html target/ && shadow-cljs watch app",
-    "hiccup": "cd hiccup/ && cp index.html target/ && shadow-cljs watch app"
+    "watch": "shadow-cljs watch app",
+    "counter": "rm -f src && ln -s counter/src src",
+    "counter-hot": "rm -f src && ln -s counter-hot/src src",
+    "buttons": "rm -f src && ln -s buttons/src src",
+    "shopping-cart": "rm -f src && ln -s shopping-cart/src src",
+    "todomvc": "rm -f src && ln -s todomvc/src src",
+    "hiccup": "rm -f src && ln -s hiccup/src src"
   },
   "license": "MIT",
   "devDependencies": {
-    "shadow-cljs": "^0.18.7"
+    "shadow-cljs": "^2.0.92"
   }
 }

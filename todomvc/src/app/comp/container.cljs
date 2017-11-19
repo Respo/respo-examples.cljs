@@ -1,10 +1,9 @@
 
 (ns app.comp.container
-  (:require-macros
-    [respo.macros :refer [defcomp cursor-> list-> <> div button section header input footer span a h1 ul li]])
   (:require
     [clojure.string :refer [capitalize]]
-    [respo.core :refer [create-element create-comp]]
+    [respo.macros :refer [defcomp cursor-> list-> <> div button section header input footer span a h1 ul li]]
+    [respo.core :refer [create-element]]
     [app.actions :refer [try-add-todo toggle-all clear-completed]]
     [app.comp.todo :refer [comp-todo]]))
 

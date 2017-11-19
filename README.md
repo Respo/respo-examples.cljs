@@ -10,10 +10,11 @@ More on Respo https://github.com/Respo/respo/wiki/Quick-Start
 
 ```bash
 yarn
-yarn serve
-# another tty
+mkdir target/
+cp index.html target/
 yarn counter
-# open localhost:8080/counter/ , notice the path for example
+yarn watch
+# open localhost:8080
 ```
 
 Available examples:
@@ -25,6 +26,10 @@ yarn counter-hot
 yarn shopping-cart
 yarn todomvc
 yarn hiccup
+```
+
+```bash
+yarn watch
 ```
 
 ### License

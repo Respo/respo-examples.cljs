@@ -1,8 +1,7 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp <> div button span]])
   (:require
-    [respo.core :refer [create-comp]]
+    [respo.macros :refer [defcomp <> div button span]]
     [app.actions :refer [increment decrement increment-if-odd increment-async]]))
 
 (defcomp comp-container (store)

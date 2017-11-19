@@ -1,8 +1,7 @@
 
 (ns app.comp.box
-  (:require-macros [respo.macros :refer [defcomp <> div span]])
   (:require
-    [respo.core :refer [create-comp]]
+    [respo.macros :refer [defcomp <> div span]]
     [app.comp.button :refer [comp-button]]))
 
 (def initial-state 0)

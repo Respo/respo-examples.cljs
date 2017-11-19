@@ -1,9 +1,9 @@
 
 (ns app.comp.cart
-  (:require-macros [respo.macros :refer [defcomp list-> <> div button h2 p span ul li]])
   (:require
-    [respo.core :refer [create-comp create-element]]
+    [respo.macros :refer [defcomp list-> <> div button h2 p span ul li]]
     [respo.comp.inspect :refer [comp-inspect]]
+    [respo.core :refer [create-element]]
     [app.actions :refer [checkout]]))
 
 (defcomp comp-cart [store]

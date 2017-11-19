@@ -1,8 +1,7 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp cursor-> <> div hr span]])
   (:require
-    [respo.core :refer [create-comp]]))
+    [respo.macros :refer [defcomp cursor-> <> div hr span]]))
 
 (defn on-click [e d! m!]
   (js/alert "Clicked!"))

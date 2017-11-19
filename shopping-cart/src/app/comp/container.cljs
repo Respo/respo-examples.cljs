@@ -1,8 +1,7 @@
 
 (ns app.comp.container
-  (:require-macros [respo.macros :refer [defcomp <> div hr h1 h2 span]])
   (:require
-    [respo.core :refer [create-comp]]
+    [respo.macros :refer [defcomp <> div hr h1 h2 span]]
     [app.actions :refer []]
     [app.comp.product-list :refer [comp-product-list]]
     [app.comp.cart :refer [comp-cart]]))

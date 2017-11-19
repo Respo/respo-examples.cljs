@@ -1,8 +1,7 @@
 
 (ns app.comp.product-list
-  (:require-macros [respo.macros :refer [defcomp list-> <> div button br span ul li]])
   (:require
-    [respo.core :refer [create-comp]]
+    [respo.macros :refer [defcomp list-> <> div button br span ul li]]
     [app.actions :refer [add-to-cart]]))
 
 (defcomp comp-product-list [store]
