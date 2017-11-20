@@ -16,21 +16,21 @@
         total (apply + (map #(* (:price %1) (:quantity %1)) products))
         checkout-status (:last-checkout store)]
     (div {:class-name "cart"}
-      (h2 {} (<> span "Your cart" nil))
+      (h2 {} (<> "Your cart"))
       (if (empty? products)
         (p {}
           (create-element :i {}
-            (<> span "Please add some products to cart" nil))))
+            (<> "Please add some products to cart"))))
       (list-> :ul {}
         (->> products (map (fn [product]
             [(:id product) (li {}
-              (<> span (str (:title product) " - " (:price product) " x " (:quantity product)) nil))]))))
+              (<> (str (:title product) " - " (:price product) " x " (:quantity product))))]))))
       (p {}
-        (<> span (str "Total: " total) nil))
+        (<> (str "Total: " total)))
       (p {}
         (button {:disabled (empty? products)
                  :on {:click (checkout products)}}
-          (<> span "Checkout" nil)))
+          (<> "Checkout")))
       (if (some? checkout-status)
         (p {}
-          (<> span (str "Checkout " checkout-status) nil))))))
+          (<> (str "Checkout " checkout-status)))))))

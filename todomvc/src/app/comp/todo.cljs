@@ -21,7 +21,7 @@
                   :checked (:done todo)
                   :on {:change (toggle-todo (:id todo))}})
           (create-element :label {:on {:dblclick (fn [e dispatch!] (dispatch! :states [*cursor* (assoc state :editing true)]))}}
-            (<> span (:text todo) nil))
+            (<> (:text todo)))
           (button {:class-name "destroy"
                    :on {:click (delete-todo (:id todo))}}))
         (if (:editing state)

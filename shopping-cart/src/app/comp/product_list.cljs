@@ -10,8 +10,8 @@
       (map (fn [product]
         [(:id product)
          (li {}
-           (<> span (str (:title product) " - " (:price product)) nil)
+           (<> (str (:title product) " - " (:price product)))
            (br {})
            (button {:disabled (<= (:inventory product) 0)
                     :on {:click (add-to-cart product)}}
-              (<> span "Add to cart" nil)))])))))
+              (<> "Add to cart")))])))))

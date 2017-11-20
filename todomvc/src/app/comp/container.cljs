@@ -22,7 +22,7 @@
         state (or (:data states) initial-state)]
     (section  {:class-name "todoapp"}
       (header {:class-name "header"}
-        (h1 {} (<> span "todos" nil))
+        (h1 {} (<> "todos"))
         (input {:autofocus true :class-name "new-todo"
                 :autocomplete "off"
                 :placeholder "What needs to be done?"
@@ -45,8 +45,8 @@
           (footer {:class-name "footer"}
             (span {:class-name "todo-count"}
               (create-element :strong {}
-                (<> span remaining nil))
-              (<> span (str " " (pluralize "item" remaining) " left") nil))
+                (<> remaining))
+              (<> (str " " (pluralize "item" remaining) " left")))
             (list-> :ul {:class-name "filters"}
               (->> (keys filters)
                 (map (fn [filter-name]
@@ -54,8 +54,8 @@
                     (a {:class-name (if (= filter-name (:filter state)) "selected")
                         :on {:click (fn [e dispatch!]
                           (dispatch! :states [*cursor* (assoc state :filter filter-name)]))}}
-                      (<> span (capitalize (str filter-name)) nil)))]))))
+                      (<> (capitalize (str filter-name)))))]))))
             (if (> (count tasks) remaining)
               (button {:class-name "clear-completed"
                        :on {:click clear-completed}}
-                (<> span "Clear complited" nil)))))))))
+                (<> "Clear complited")))))))))

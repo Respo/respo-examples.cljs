@@ -18,17 +18,17 @@
         state (:data states)]
     (div {}
       (div {}
-        (<> span "Demo of component with mutate" nil)
+        (<> "Demo of component with mutate")
         (comp-box states 5))
       (hr {})
-      (<> span "Demo of list of them" nil)
+      (<> "Demo of list of them")
       (list-> :div {}
         (->> (range 10)
           (map-indexed (fn [index n]
             [index (cursor-> n comp-box states n)]))))
       (hr {})
       (div {}
-        (<> span "Demo of dispatch:" nil)
+        (<> "Demo of dispatch:")
         (comp-button "inc" handle-inc)
         (comp-button "dec" (handle-dec-with-log state store))
-        (<> span (str store) nil)))))
+        (<> (str store))))))

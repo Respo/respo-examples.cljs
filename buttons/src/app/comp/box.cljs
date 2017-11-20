@@ -13,6 +13,6 @@
 (defcomp comp-box [states n]
   (let [state (or (:data states) initial-state)]
     (div {}
-      (<> span (str n ". ") nil)
+      (<> (str n ". "))
       (comp-button "inc" (handle-click *cursor* (+ state n)))
-      (<> span state nil))))
+      (<> state))))

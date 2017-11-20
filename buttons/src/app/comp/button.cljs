@@ -12,4 +12,4 @@
                 :margin "0 8px"
                 :cursor "pointer"}
         :on {:click on-click}}
-    (<> span text nil)))
+    (<> text)))
