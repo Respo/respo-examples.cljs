@@ -10,11 +10,10 @@
     "counter-hot": "rm -f src && ln -s counter-hot/src src",
     "buttons": "rm -f src && ln -s buttons/src src",
     "shopping-cart": "rm -f src && ln -s shopping-cart/src src",
-    "todomvc": "rm -f src && ln -s todomvc/src src",
-    "hiccup": "rm -f src && ln -s hiccup/src src"
+    "todomvc": "rm -f src && ln -s todomvc/src src"
   },
   "license": "MIT",
   "devDependencies": {
-    "shadow-cljs": "^2.0.92"
+    "shadow-cljs": "^2.0.108"
   }
 }
