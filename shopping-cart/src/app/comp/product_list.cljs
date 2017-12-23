@@ -13,5 +13,5 @@
            (<> (str (:title product) " - " (:price product)))
            (br {})
            (button {:disabled (<= (:inventory product) 0)
-                    :on {:click (add-to-cart product)}}
+                    :on-click (add-to-cart product)}
               (<> "Add to cart")))])))))

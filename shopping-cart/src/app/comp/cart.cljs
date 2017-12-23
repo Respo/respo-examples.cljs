@@ -29,7 +29,7 @@
         (<> (str "Total: " total)))
       (p {}
         (button {:disabled (empty? products)
-                 :on {:click (checkout products)}}
+                 :on-click (checkout products)}
           (<> "Checkout")))
       (if (some? checkout-status)
         (p {}

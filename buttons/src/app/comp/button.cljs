@@ -11,5 +11,5 @@
                 :color "white"
                 :margin "0 8px"
                 :cursor "pointer"}
-        :on {:click on-click}}
+        :on-click on-click}
     (<> text)))

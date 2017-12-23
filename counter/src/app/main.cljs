@@ -11,7 +11,7 @@
 
 (defn render-app! []
   (let [target (.querySelector js/document "#app")]
-    (render! target (comp-container @*store) dispatch!)))
+    (render! target (comp-container @*store) #(dispatch! %1 %2))))
 
 (defn main! []
   (render-app!)

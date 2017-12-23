@@ -27,14 +27,14 @@
                 :autocomplete "off"
                 :placeholder "What needs to be done?"
                 :value (:text state)
-                :on {:keydown (try-add-todo *cursor* state)
-                        :input (fn [e dispatch!]
-                                  (dispatch! :states [*cursor* (assoc state   :text (:value e))]))}}))
+                :on-keydown (try-add-todo *cursor* state)
+                :on-input (fn [e dispatch!]
+                              (dispatch! :states [*cursor* (assoc state   :text (:value e))]))}))
       (if (not (empty? tasks))
         (section {:class-name "main"}
           (input {:class-name "toggle-all" :type "checkbox"
                   :checked (every? #(:done %1) tasks)
-                  :on {:change toggle-all}})
+                  :on-change toggle-all})
           (list-> :ul {:class-name "todo-list"}
             (->> (filterv (get filters (:filter state)) tasks)
               (mapv (fn [todo]
@@ -52,10 +52,11 @@
                 (map (fn [filter-name]
                   [filter-name (li {}
                     (a {:class-name (if (= filter-name (:filter state)) "selected")
-                        :on {:click (fn [e dispatch!]
-                          (dispatch! :states [*cursor* (assoc state :filter filter-name)]))}}
+                        :on-click
+                          (fn [e dispatch!]
+                            (dispatch! :states [*cursor* (assoc state :filter filter-name)]))}
                       (<> (capitalize (str filter-name)))))]))))
             (if (> (count tasks) remaining)
               (button {:class-name "clear-completed"
-                       :on {:click clear-completed}}
+                       :on-click clear-completed}
                 (<> "Clear complited")))))))))
