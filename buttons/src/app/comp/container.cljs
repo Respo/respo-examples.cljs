@@ -1,7 +1,7 @@
 
 (ns app.comp.container
   (:require
-    [respo.macros :refer [defcomp list-> cursor-> <> div hr span]]
+    [respo.core :refer [defcomp list-> cursor-> <> div hr span]]
     [app.comp.button :refer [comp-button]]
     [app.comp.box :refer [comp-box]]))
 

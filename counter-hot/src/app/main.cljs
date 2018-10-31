@@ -22,5 +22,3 @@
   (clear-cache!)
   (render-app!)
   (println "Code updated."))
-
-(set! (.-onload js/window) main!)

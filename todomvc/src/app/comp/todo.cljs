@@ -2,9 +2,8 @@
 (ns app.comp.todo
   (:require
     [clojure.string :as string]
-    [respo.core :refer [create-element]]
     [app.actions :refer [delete-todo toggle-todo input-keyup]]
-    [respo.macros :refer [defcomp <> div input button span li]]))
+    [respo.core :refer [defcomp <> div input button span li create-element]]))
 
 (def initial-state {:text "" :editing false})
 
