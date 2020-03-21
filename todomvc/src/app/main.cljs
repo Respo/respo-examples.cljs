@@ -1,7 +1,7 @@
 
 (ns app.main
   (:require [respo.core :refer [render! clear-cache!]]
-            [app.updater.core :refer [updater]]
+            [app.updater :refer [updater]]
             [app.comp.container :refer [comp-container]]))
 
 (defonce *store (atom {:tasks [] :states {}}))
@@ -13,7 +13,11 @@
   @*id-counter)
 
 (defn dispatch! [op op-data]
-  (reset! *store (updater @*store op op-data (get-id!))))
+  (if (vector? op)
+    (recur :states [op op-data])
+    (do
+      (println "dispatch:" op op-data)
+      (reset! *store (updater @*store op op-data (get-id!))))))
 
 (defn render-app! []
   (let [target (.querySelector js/document "#app")]

@@ -1,7 +1,7 @@
 
 (ns app.comp.container
   (:require
-    [respo.core :refer [defcomp list-> cursor-> <> div hr span]]
+    [respo.core :refer [defcomp list-> >> <> div hr span]]
     [app.comp.button :refer [comp-button]]
     [app.comp.box :refer [comp-box]]))
 
@@ -25,7 +25,7 @@
       (list-> :div {}
         (->> (range 10)
           (map-indexed (fn [index n]
-            [index (cursor-> n comp-box states n)]))))
+            [index (comp-box (>> states n) n)]))))
       (hr {})
       (div {}
         (<> "Demo of dispatch:")
