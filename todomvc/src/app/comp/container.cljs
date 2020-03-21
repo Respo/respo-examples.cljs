@@ -2,7 +2,7 @@
 (ns app.comp.container
   (:require
     [clojure.string :refer [capitalize]]
-    [respo.core :refer [defcomp cursor-> list-> <> div button section header input footer span a h1 ul li create-element]]
+    [respo.core :refer [defcomp >> list-> <> div button section header input footer span a h1 ul li create-element]]
     [app.actions :refer [try-add-todo toggle-all clear-completed]]
     [app.comp.todo :refer [comp-todo]]))
 
@@ -18,6 +18,7 @@
 (defcomp comp-container [store]
   (let [states (:states store)
         tasks (:tasks store)
+        cursor (or (:cursor states) [])
         state (or (:data states) initial-state)]
     (section  {:class-name "todoapp"}
       (header {:class-name "header"}
@@ -26,9 +27,9 @@
                 :autocomplete "off"
                 :placeholder "What needs to be done?"
                 :value (:text state)
-                :on-keydown (try-add-todo *cursor* state)
+                :on-keydown (try-add-todo cursor state)
                 :on-input (fn [e dispatch!]
-                              (dispatch! :states [*cursor* (assoc state   :text (:value e))]))}))
+                              (dispatch! :states [cursor (assoc state :text (:value e))]))}))
       (if (not (empty? tasks))
         (section {:class-name "main"}
           (input {:class-name "toggle-all" :type "checkbox"
@@ -37,7 +38,7 @@
           (list-> :ul {:class-name "todo-list"}
             (->> (filterv (get filters (:filter state)) tasks)
               (mapv (fn [todo]
-                [(:id todo) (cursor-> (:id todo) comp-todo states todo)]))))))
+                [(:id todo) (comp-todo (>> states (:id todo)) todo)]))))))
       (if (not (empty? tasks))
         (let [remaining
                 (count (filterv (fn [x] (not (:done x))) tasks))]
@@ -53,7 +54,7 @@
                     (a {:class-name (if (= filter-name (:filter state)) "selected")
                         :on-click
                           (fn [e dispatch!]
-                            (dispatch! :states [*cursor* (assoc state :filter filter-name)]))}
+                            (dispatch! cursor (assoc state :filter filter-name)))}
                       (<> (capitalize (str filter-name)))))]))))
             (if (> (count tasks) remaining)
               (button {:class-name "clear-completed"

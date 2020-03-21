@@ -8,7 +8,8 @@
 (def initial-state {:text "" :editing false})
 
 (defcomp comp-todo [states todo]
-  (let [state (or (:data states) initial-state)]
+  (let [cursor (:cursor states)
+        state (or (:data states) initial-state)]
       (li {:class-name
             (->> ["toggle"
                   (if (:done todo) "completed")
@@ -21,7 +22,7 @@
                   :on-change (toggle-todo (:id todo))})
           (create-element :label
             {:on-dblclick (fn [e dispatch!]
-                            (dispatch! :states [*cursor* (assoc state :editing true)]))}
+                            (dispatch! cursor (assoc state :editing true)))}
             (<> (:text todo)))
           (button {:class-name "destroy"
                    :on-click (delete-todo (:id todo))}))
@@ -29,5 +30,5 @@
           (input {:class-name "edit" :autofocus true
                   :value (:text todo)
                   :on-input (fn [e dispatch!]
-                              (dispatch! :states [*cursor* (assoc state :text (:value e))]))
-                  :on-keyup (input-keyup (:id todo) *cursor* state)})))))
+                              (dispatch! cursor (assoc state :text (:value e))))
+                  :on-keyup (input-keyup (:id todo) cursor state)})))))

@@ -3,7 +3,7 @@
   (:require
     [clojure.string :refer [blank?]]))
 
-(defn try-add-todo [*cursor* state]
+(defn try-add-todo [cursor state]
   (fn [e dispatch!]
     (if
       (and
@@ -11,22 +11,22 @@
         (not (blank? (:text state))))
       (do
         (dispatch! :add-todo (:text state))
-        (dispatch! :states [*cursor* (assoc state :text "")])))))
+        (dispatch! cursor (assoc state :text ""))))))
 
 (defn add-todo [e dispatch!]
   (dispatch! :add-todo nil))
 
-(defn input-keyup [id *cursor* state]
+(defn input-keyup [id cursor state]
   (fn [e dispatch!]
     (cond
-      (= (:key-code e) 13)
+      (= (:key e) "Enter")
       (if (blank? (:text state))
         (dispatch! :delete-todo id)
         (do
           (dispatch! :edit-todo [id (:text state)])
-          (dispatch! :states [*cursor* (assoc state :editing false)])))
-      (= (:key-code e) 27)
-      (dispatch! :states [*cursor* (assoc state :editing false)])
+          (dispatch! cursor (assoc state :editing false))))
+      (= (:key e) "Escape")
+      (do (println "ecs") (dispatch! cursor (assoc state :editing false)))
       :else nil)))
 
 (defn delete-todo [id]
